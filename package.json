@@ -1,0 +1,23 @@
+{
+  "name": "screenshare",
+  "version": "1.0.0",
+  "description": "Screenshare is an application that allows a user to share their current session on a website. This currently works for Firefox, Chrome, Opera and Safari. For mobile devices, Chrome and Firefox are supported on Android.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "socket.io": "^2.0.4",
+    "express": "^4.16.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibasaran/screenshare.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibasaran/screenshare/issues"
+  },
+  "homepage": "https://github.com/ibasaran/screenshare#readme"
+}
