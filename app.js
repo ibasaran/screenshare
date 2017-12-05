@@ -1,19 +1,15 @@
-var http = require('http');
 var express = require('express');
 var app = express();
-var server = http.createServer(app).listen(3001);
-var io = require('socket.io').listen(server);
-io.set('log level', 1);
-io.set('transports', ['websocket']);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-app.configure(function(){
-    app.use(function(req, res, next) {
-        res.setHeader("X-UA-Compatible", "chrome=1");
-        return next();
-    });
-    app.use(express.static(__dirname + '/public'));
+app.use(function(req, res, next) {
+    res.setHeader("X-UA-Compatible", "chrome=1");
+    return next();
 });
-io.sockets.on('connection', function(socket) {
+app.use(express.static(__dirname + '/public'));
+
+    io.sockets.on('connection', function(socket) {
     socket.on('CreateSession', function(msg){
         socket.join(msg);
     });
@@ -39,4 +35,4 @@ io.sockets.on('connection', function(socket) {
         socket.broadcast.to(msg.room).emit('DOMLoaded', '');
     });
 });
-app.listen(3000);
+server.listen(3000);
